@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  sonic:
+    image: valeriansaliou/sonic:v1.3.0
+    ports:
+      - 1491:1491
+    restart: always
+    container_name: sonic
+    volumes:
+      - ./docker/store:/var/lib/sonic/store
+      - ./config.cfg:/etc/sonic.cfg
+#  gsonic:
+#    tty: true
+#    stdin_open: true
+#    build:
+#      context: ./
+#    environment:
+#      - SONIC_HOST=sonic
+#      - SONIC_PORT=1491
+#      - SONIC_PASSWORD=SecretPassword
+#    volumes:
+#      - ./:/app
+#    depends_on:
+#      - sonic
